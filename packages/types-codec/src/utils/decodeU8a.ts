@@ -37,7 +37,7 @@ export function decodeU8a <T extends Codec = Codec, E = T> (registry: Registry, 
     try {
       const value = new Types[i](registry, u8a.subarray(offset));
 
-      offset += value.initialU8aLength || value.encodedLength;
+      offset += value.encodedLength;
       result[i] = withZip
         ? [keys[i], value] as unknown as E
         : value as unknown as E;
